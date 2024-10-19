@@ -1,6 +1,0 @@
-framework module Pods_WebRTC_WebRTCUITests {
-  umbrella header "Pods-WebRTC-WebRTCUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
