@@ -13,6 +13,8 @@
 		4B0988282CC3C89400ED87B7 /* SignalingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988272CC3C89400ED87B7 /* SignalingModels.swift */; };
 		4B09882A2CC3C93D00ED87B7 /* SignalParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988292CC3C93D00ED87B7 /* SignalParser.swift */; };
 		4B09882C2CC3CA3800ED87B7 /* SignalGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09882B2CC3CA3800ED87B7 /* SignalGenerator.swift */; };
+		4B09882F2CC40EFF00ED87B7 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09882E2CC40EFF00ED87B7 /* WebRTCClient.swift */; };
+		4B0988322CC41D5A00ED87B7 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988312CC41D5A00ED87B7 /* UIView+Constraints.swift */; };
 		4B91908F2CC2926C00E2FC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */; };
 		4B9190932CC2926C00E2FC22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9190922CC2926C00E2FC22 /* ViewController.swift */; };
 		4B9190982CC2926E00E2FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9190972CC2926E00E2FC22 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		4B0988272CC3C89400ED87B7 /* SignalingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingModels.swift; sourceTree = "<group>"; };
 		4B0988292CC3C93D00ED87B7 /* SignalParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalParser.swift; sourceTree = "<group>"; };
 		4B09882B2CC3CA3800ED87B7 /* SignalGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGenerator.swift; sourceTree = "<group>"; };
+		4B09882E2CC40EFF00ED87B7 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		4B0988312CC41D5A00ED87B7 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		4B91908B2CC2926C00E2FC22 /* WebRTCExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebRTCExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B9190922CC2926C00E2FC22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		4B09880E2CC29E1600ED87B7 /* Engines */ = {
 			isa = PBXGroup;
 			children = (
+				4B09882D2CC40EF100ED87B7 /* WebRTCClient */,
 				4B0988262CC3C88600ED87B7 /* Models */,
 				4B0988232CC3C83000ED87B7 /* LocalSocketEngines */,
 			);
@@ -148,6 +153,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4B09882D2CC40EF100ED87B7 /* WebRTCClient */ = {
+			isa = PBXGroup;
+			children = (
+				4B09882E2CC40EFF00ED87B7 /* WebRTCClient.swift */,
+			);
+			path = WebRTCClient;
+			sourceTree = "<group>";
+		};
+		4B0988302CC41D4500ED87B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4B0988312CC41D5A00ED87B7 /* UIView+Constraints.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4B9190822CC2926C00E2FC22 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +194,7 @@
 		4B91908D2CC2926C00E2FC22 /* WebRTC */ = {
 			isa = PBXGroup;
 			children = (
+				4B0988302CC41D4500ED87B7 /* Extensions */,
 				4B0988202CC3C79B00ED87B7 /* Constants */,
 				4B09880E2CC29E1600ED87B7 /* Engines */,
 				4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */,
@@ -467,7 +489,9 @@
 				4B09881F2CC3C4B300ED87B7 /* LocalSocketConnecter.swift in Sources */,
 				4B09882C2CC3CA3800ED87B7 /* SignalGenerator.swift in Sources */,
 				4B9190932CC2926C00E2FC22 /* ViewController.swift in Sources */,
+				4B0988322CC41D5A00ED87B7 /* UIView+Constraints.swift in Sources */,
 				4B0988252CC3C85E00ED87B7 /* LocalSocketDataProvider.swift in Sources */,
+				4B09882F2CC40EFF00ED87B7 /* WebRTCClient.swift in Sources */,
 				4B09882A2CC3C93D00ED87B7 /* SignalParser.swift in Sources */,
 				4B0988222CC3C7A400ED87B7 /* Typealias.swift in Sources */,
 				4B91908F2CC2926C00E2FC22 /* AppDelegate.swift in Sources */,
