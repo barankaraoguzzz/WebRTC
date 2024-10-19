@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B09881F2CC3C4B300ED87B7 /* LocalSocketConnecter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09881E2CC3C4B300ED87B7 /* LocalSocketConnecter.swift */; };
+		4B0988222CC3C7A400ED87B7 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988212CC3C7A400ED87B7 /* Typealias.swift */; };
+		4B0988252CC3C85E00ED87B7 /* LocalSocketDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988242CC3C85E00ED87B7 /* LocalSocketDataProvider.swift */; };
+		4B0988282CC3C89400ED87B7 /* SignalingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988272CC3C89400ED87B7 /* SignalingModels.swift */; };
+		4B09882A2CC3C93D00ED87B7 /* SignalParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988292CC3C93D00ED87B7 /* SignalParser.swift */; };
+		4B09882C2CC3CA3800ED87B7 /* SignalGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09882B2CC3CA3800ED87B7 /* SignalGenerator.swift */; };
 		4B91908F2CC2926C00E2FC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */; };
 		4B9190932CC2926C00E2FC22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9190922CC2926C00E2FC22 /* ViewController.swift */; };
 		4B9190982CC2926E00E2FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9190972CC2926E00E2FC22 /* Assets.xcassets */; };
@@ -54,6 +60,12 @@
 		18BD7874BB27513F1EAED923 /* Pods_WebRTCExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebRTCExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19E4FBEDB5681467DB308EC6 /* Pods-WebRTCExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebRTCExample.debug.xcconfig"; path = "Target Support Files/Pods-WebRTCExample/Pods-WebRTCExample.debug.xcconfig"; sourceTree = "<group>"; };
 		28EB682BE5712A5FD9BD4D79 /* Pods_WebRTCExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WebRTCExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B09881E2CC3C4B300ED87B7 /* LocalSocketConnecter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSocketConnecter.swift; sourceTree = "<group>"; };
+		4B0988212CC3C7A400ED87B7 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
+		4B0988242CC3C85E00ED87B7 /* LocalSocketDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSocketDataProvider.swift; sourceTree = "<group>"; };
+		4B0988272CC3C89400ED87B7 /* SignalingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalingModels.swift; sourceTree = "<group>"; };
+		4B0988292CC3C93D00ED87B7 /* SignalParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalParser.swift; sourceTree = "<group>"; };
+		4B09882B2CC3CA3800ED87B7 /* SignalGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalGenerator.swift; sourceTree = "<group>"; };
 		4B91908B2CC2926C00E2FC22 /* WebRTCExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebRTCExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B9190922CC2926C00E2FC22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +115,37 @@
 		4B09880E2CC29E1600ED87B7 /* Engines */ = {
 			isa = PBXGroup;
 			children = (
+				4B0988262CC3C88600ED87B7 /* Models */,
+				4B0988232CC3C83000ED87B7 /* LocalSocketEngines */,
 			);
 			path = Engines;
+			sourceTree = "<group>";
+		};
+		4B0988202CC3C79B00ED87B7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				4B0988212CC3C7A400ED87B7 /* Typealias.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		4B0988232CC3C83000ED87B7 /* LocalSocketEngines */ = {
+			isa = PBXGroup;
+			children = (
+				4B09881E2CC3C4B300ED87B7 /* LocalSocketConnecter.swift */,
+				4B0988242CC3C85E00ED87B7 /* LocalSocketDataProvider.swift */,
+				4B0988292CC3C93D00ED87B7 /* SignalParser.swift */,
+				4B09882B2CC3CA3800ED87B7 /* SignalGenerator.swift */,
+			);
+			path = LocalSocketEngines;
+			sourceTree = "<group>";
+		};
+		4B0988262CC3C88600ED87B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B0988272CC3C89400ED87B7 /* SignalingModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4B9190822CC2926C00E2FC22 = {
@@ -132,6 +173,7 @@
 		4B91908D2CC2926C00E2FC22 /* WebRTC */ = {
 			isa = PBXGroup;
 			children = (
+				4B0988202CC3C79B00ED87B7 /* Constants */,
 				4B09880E2CC29E1600ED87B7 /* Engines */,
 				4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */,
 				4B9190922CC2926C00E2FC22 /* ViewController.swift */,
@@ -421,7 +463,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0988282CC3C89400ED87B7 /* SignalingModels.swift in Sources */,
+				4B09881F2CC3C4B300ED87B7 /* LocalSocketConnecter.swift in Sources */,
+				4B09882C2CC3CA3800ED87B7 /* SignalGenerator.swift in Sources */,
 				4B9190932CC2926C00E2FC22 /* ViewController.swift in Sources */,
+				4B0988252CC3C85E00ED87B7 /* LocalSocketDataProvider.swift in Sources */,
+				4B09882A2CC3C93D00ED87B7 /* SignalParser.swift in Sources */,
+				4B0988222CC3C7A400ED87B7 /* Typealias.swift in Sources */,
 				4B91908F2CC2926C00E2FC22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
