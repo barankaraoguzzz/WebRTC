@@ -7,10 +7,11 @@ target 'WebRTCExample' do
 
   # Pods for WebRTCExample
   pod 'GoogleWebRTC'
+  pod 'IQKeyboardManagerSwift'
 
   target 'WebRTCExampleTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'GoogleWebRTC'
   end
 
   target 'WebRTCExampleUITests' do
