@@ -8,13 +8,13 @@
 import Foundation
 import Combine
 
-protocol LocalSocketDataProvidable {
+protocol LocalSocketDataNotifiable {
     func send(messageModel: SignalingMessage, to host: String) async throws
     func startListening()
     func observe(_ completion: @escaping Callback<SignalingMessage>)
 }
 
-final class LocalSocketDataNotifier: LocalSocketDataProvidable {
+final class LocalSocketDataNotifier: LocalSocketDataNotifiable {
     
     private var cancellable: AnyCancellable?
     private let publisher: AnyPublisher<String?, Never>!
@@ -68,6 +68,7 @@ class LocalSocketDataProvider {
     
     public init(socketConnecter: LocalSocketConnectable = LocalSocketConnecter()) {
         self.socketConnecter = socketConnecter
+        socketConnecter.listen()
     }
     
     func startListening() {

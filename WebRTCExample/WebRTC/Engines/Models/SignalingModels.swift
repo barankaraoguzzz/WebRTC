@@ -26,6 +26,5 @@ struct CandidateModel: Codable {
 
 struct SenderProperties: Codable {
     let ipAddress: String
-    let port: Int
     let name: String?
 }
