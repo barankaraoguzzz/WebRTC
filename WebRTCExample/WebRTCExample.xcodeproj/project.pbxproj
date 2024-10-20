@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,6 +31,7 @@
 		4B09885F2CC5A17D00ED87B7 /* LocalSocketManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09885E2CC5A17D00ED87B7 /* LocalSocketManagerTests.swift */; };
 		4B0988612CC5A35500ED87B7 /* LocalDataNotifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988602CC5A35500ED87B7 /* LocalDataNotifierTests.swift */; };
 		4B0988682CC5B01100ED87B7 /* CallViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988672CC5B01100ED87B7 /* CallViewModelTests.swift */; };
+		4B09886B2CC5C77200ED87B7 /* AtomicDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 4B09886A2CC5C77200ED87B7 /* AtomicDesignSystem */; };
 		4B91908F2CC2926C00E2FC22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B91908E2CC2926C00E2FC22 /* AppDelegate.swift */; };
 		4B9190982CC2926E00E2FC22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B9190972CC2926E00E2FC22 /* Assets.xcassets */; };
 		4B91909B2CC2926E00E2FC22 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4B91909A2CC2926E00E2FC22 /* Base */; };
@@ -88,7 +89,6 @@
 		4B0988392CC42A7400ED87B7 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		4B09883B2CC42A7C00ED87B7 /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 		4B09883D2CC42A9300ED87B7 /* LifeCycleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleProtocol.swift; sourceTree = "<group>"; };
-		4B0988402CC4340200ED87B7 /* AtomicDesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AtomicDesignSystem; path = ../AtomicDesignSystem; sourceTree = SOURCE_ROOT; };
 		4B0988452CC452D000ED87B7 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
 		4B0988472CC45D9A00ED87B7 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		4B09884C2CC4682D00ED87B7 /* IPGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPGenerator.swift; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0988562CC5993E00ED87B7 /* AtomicDesignSystem in Frameworks */,
+				4B09886B2CC5C77200ED87B7 /* AtomicDesignSystem in Frameworks */,
 				AE9303B10C8F1D98BE1FD904 /* Pods_WebRTCExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,14 +219,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		4B09883F2CC433A900ED87B7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4B0988402CC4340200ED87B7 /* AtomicDesignSystem */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		4B0988432CC451F900ED87B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +273,6 @@
 		4B91908D2CC2926C00E2FC22 /* WebRTC */ = {
 			isa = PBXGroup;
 			children = (
-				4B09883F2CC433A900ED87B7 /* Frameworks */,
 				4B0988342CC429E700ED87B7 /* Protocols */,
 				4B0988332CC4298300ED87B7 /* Scenes */,
 				4B0988302CC41D4500ED87B7 /* Extensions */,
@@ -434,6 +426,9 @@
 				Base,
 			);
 			mainGroup = 4B9190822CC2926C00E2FC22;
+			packageReferences = (
+				4B0988692CC5C77200ED87B7 /* XCLocalSwiftPackageReference "../Local Frameworks/AtomicDesignSystem" */,
+			);
 			productRefGroup = 4B91908C2CC2926C00E2FC22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -976,8 +971,19 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		4B0988692CC5C77200ED87B7 /* XCLocalSwiftPackageReference "../Local Frameworks/AtomicDesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../Local Frameworks/AtomicDesignSystem";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		4B0988552CC5993E00ED87B7 /* AtomicDesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AtomicDesignSystem;
+		};
+		4B09886A2CC5C77200ED87B7 /* AtomicDesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AtomicDesignSystem;
 		};
