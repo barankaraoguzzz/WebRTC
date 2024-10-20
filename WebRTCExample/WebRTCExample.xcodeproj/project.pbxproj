@@ -27,7 +27,6 @@
 		4B0988512CC58AD200ED87B7 /* UIScreen+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988502CC58AD200ED87B7 /* UIScreen+Size.swift */; };
 		4B0988532CC5981700ED87B7 /* SignalGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988522CC5981700ED87B7 /* SignalGeneratorTests.swift */; };
 		4B0988562CC5993E00ED87B7 /* AtomicDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 4B0988552CC5993E00ED87B7 /* AtomicDesignSystem */; };
-		4B09885B2CC599CE00ED87B7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0988592CC599C100ED87B7 /* XCTest.framework */; };
 		4B09885D2CC59E7500ED87B7 /* SignalParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09885C2CC59E7500ED87B7 /* SignalParserTests.swift */; };
 		4B09885F2CC5A17D00ED87B7 /* LocalSocketManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09885E2CC5A17D00ED87B7 /* LocalSocketManagerTests.swift */; };
 		4B0988612CC5A35500ED87B7 /* LocalDataNotifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0988602CC5A35500ED87B7 /* LocalDataNotifierTests.swift */; };
@@ -123,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B09885B2CC599CE00ED87B7 /* XCTest.framework in Frameworks */,
 				4B0988562CC5993E00ED87B7 /* AtomicDesignSystem in Frameworks */,
 				AE9303B10C8F1D98BE1FD904 /* Pods_WebRTCExample.framework in Frameworks */,
 			);
