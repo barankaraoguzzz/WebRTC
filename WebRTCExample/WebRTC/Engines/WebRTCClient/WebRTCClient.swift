@@ -8,6 +8,7 @@
 import Foundation
 import WebRTC
 
+
 protocol WebRTCClientDelegate {
     func didStateChanged(didChange stateChanged: RTCSignalingState)
     func didIceConnectionStateChanged(didChange newState: RTCIceConnectionState)
@@ -17,8 +18,21 @@ protocol WebRTCClientDelegate {
 }
 
 protocol WebRTCClientProtocol: AnyObject {
+    var delegate: WebRTCClientDelegate? { get set }
+    var localView: UIView! { get }
+    var remoteView: UIView! { get }
+    func setup()
+    func connect()
+    func disconnect()
     func makeOffer() async throws -> RTCSessionDescription
     func makeAnswer() async throws -> RTCSessionDescription
+    func receiveOffer(from sdp: RTCSessionDescription) async throws
+    func receiveAnswer(from sdp: RTCSessionDescription) async throws
+    func receiveCandidate(candidate: RTCIceCandidate)
+    
+    func toggleSpeaker(_ isSpeakerOn: Bool)
+    func toggleMute(_ isMuted: Bool)
+    func switchCamera()
 }
 
 final class WebRTCClient: NSObject, WebRTCClientProtocol {
@@ -34,6 +48,7 @@ final class WebRTCClient: NSObject, WebRTCClientProtocol {
     private var peerConnectionFactory: RTCPeerConnectionFactory!
     private var localVideoTrack: RTCVideoTrack!
     private var localAudioTrack: RTCAudioTrack!
+    private var remoteStream: RTCMediaStream?
     
     /// For views
     private var localRenderView: RTCEAGLVideoView?
@@ -48,7 +63,7 @@ final class WebRTCClient: NSObject, WebRTCClientProtocol {
         startCaptureLocalVideo(cameraPositon: .front, videoWidth: 640, videoHeight: 640*16/9, videoFps: 30)
     }
     
-    func connect(){
+    func connect() {
         self.peerConnection = setupPeerConnection()
         self.peerConnection!.delegate = self
         self.peerConnection!.add(localVideoTrack, streamIds: ["stream0"])
@@ -61,6 +76,7 @@ final class WebRTCClient: NSObject, WebRTCClientProtocol {
             self.peerConnectionFactory = nil
             self.peerConnection = nil
         }
+        createPeerConnectionFactory()
     }
     
     func makeOffer() async throws -> RTCSessionDescription {
@@ -96,8 +112,41 @@ final class WebRTCClient: NSObject, WebRTCClientProtocol {
         try await self.peerConnection!.setRemoteDescription(sdp)
     }
     
-    func receiveCandidate(candidate: RTCIceCandidate){
+    func receiveCandidate(candidate: RTCIceCandidate) {
         self.peerConnection!.add(candidate)
+    }
+    
+    func toggleSpeaker(_ isSpeakerOn: Bool) {
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playAndRecord, options: isSpeakerOn ? .defaultToSpeaker : [])
+            try audioSession.setActive(true)
+        } catch {
+            print("Error setting up audio session: \(error)")
+        }
+    }
+    
+    func toggleMute(_ isMuted: Bool) {
+        if let audioTrack = peerConnection?.senders.compactMap({ $0.track }).first(where: { $0.kind == "audio" }) as? RTCAudioTrack {
+            audioTrack.isEnabled = !isMuted // true ise ses açık, false ise sessiz
+        }
+    }
+    
+    func switchCamera() {
+        guard let capturer = videoCapturer else { return }
+        let currentPosition = capturer.captureSession.inputs.first?.ports.first?.sourceDevicePosition
+
+        let newPosition: AVCaptureDevice.Position = (currentPosition == .front) ? .back : .front
+        let devices = RTCCameraVideoCapturer.captureDevices()
+        
+        if let newCamera = devices.first(where: { $0.position == newPosition }) {
+            let formats = RTCCameraVideoCapturer.supportedFormats(for: newCamera)
+            let fps = formats.first?.videoSupportedFrameRateRanges.first?.maxFrameRate ?? 30
+            
+            capturer.stopCapture {
+                capturer.startCapture(with: newCamera, format: formats.first!, fps: Int(fps))
+            }
+        }
     }
 }
 
@@ -114,6 +163,7 @@ extension WebRTCClient {
         //TODO: - For Local Renderer
         localRenderView = RTCEAGLVideoView()
         localRenderView!.delegate = self
+        localRenderView!.contentMode = .scaleAspectFit
         localView = UIView()
         localView.addSubview(localRenderView!)
         localRenderView!.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +171,8 @@ extension WebRTCClient {
         
         //TODO: - For Remote Renderer
         remoteRenderView = RTCEAGLVideoView()
-        remoteRenderView?.delegate = self
+        remoteRenderView!.delegate = self
+        remoteRenderView!.contentMode = .scaleAspectFit
         remoteView = UIView()
         remoteView.addSubview(remoteRenderView!)
         remoteRenderView!.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +230,7 @@ extension WebRTCClient {
         self.localVideoTrack?.add(self.localRenderView!)
     }
     
-    private func setupPeerConnection() -> RTCPeerConnection{
+    private func setupPeerConnection() -> RTCPeerConnection {
         let rtcConf = RTCConfiguration()
         rtcConf.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
         let mediaConstraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
@@ -242,6 +293,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
+        self.remoteStream = stream
         if let track = stream.videoTracks.first {
           track.add(remoteRenderView!)
         }

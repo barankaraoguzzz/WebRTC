@@ -10,6 +10,7 @@ import Network
 
 protocol LocalSocketConnectable {
     var messageReceivedCallback: Callback<String>? { get set }
+    func listen()
     func send(message: String, to host: String) async throws
 }
 
@@ -63,7 +64,7 @@ final class LocalSocketConnecter: LocalSocketConnectable {
     func send(message: String, to host: String) async throws {
         let connection = NWConnection(host: NWEndpoint.Host(host), port: NWEndpoint.Port(rawValue: listenPort)!, using: .udp)
         connection.start(queue: queue)
-        guard let data = message.data(using: .utf8) else {
+        guard let data = message.data(using: .utf8), !data.isEmpty else {
             throw ErrorType.sendMessageDataParseError
         }
         return try await withCheckedThrowingContinuation({ continuation in

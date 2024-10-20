@@ -9,7 +9,7 @@ import Foundation
 import WebRTC
 
 protocol SignalGeneratable {
-    func generateSignalMessage(from sessionDescription: RTCSessionDescription) throws -> SignalingMessage
+    func generateSignalMessage(from sessionDescription: RTCSessionDescription, senderProp: SenderProperties) throws -> SignalingMessage
     func generateSignalMessage(from iceCandidate: RTCIceCandidate) throws -> SignalingMessage
     func generateSignalMessage(from sdp: String) throws -> SignalingMessage
 }
@@ -24,7 +24,7 @@ final class SignalGenerator: SignalGeneratable {
     }
     
     
-    func generateSignalMessage(from sessionDescription: RTCSessionDescription) throws -> SignalingMessage {
+    func generateSignalMessage(from sessionDescription: RTCSessionDescription, senderProp: SenderProperties) throws -> SignalingMessage {
         let messageType = switch sessionDescription.type {
         case .offer: "offer"
         case .answer: "answer"
@@ -45,7 +45,7 @@ final class SignalGenerator: SignalGeneratable {
         return .init(
             type: messageType,
             sessionDescription: sdpMessage,
-            senderProp: nil,
+            senderProp: senderProp,
             candidate: nil
         )
     }
