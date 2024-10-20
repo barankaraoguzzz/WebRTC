@@ -107,7 +107,7 @@ fileprivate final class LocalSocketDataNotifierTests: XCTestCase {
         }
     }
     
-    func test_observe_shouldReceiveSignalingMessage() {
+    func testShouldReceiveSignalingMessage() {
         let expectation = expectation(description: "Observe signaling message")
         let expectedSignalingMessage = SignalingMessage(type: "offer", sessionDescription: nil, senderProp: nil, candidate: nil)
         
