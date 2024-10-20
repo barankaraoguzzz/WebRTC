@@ -127,7 +127,7 @@ To run the tests, launch the project using Xcode and execute all tests using `Cm
 
 1. Clone the repository:
    ```bash
-    git clone https://github.com/your-username/WebRTCExample.git
+    git clone https://github.com/barankaraoguzzz/WebRTC
    ```
 2. If using CocoaPods, run `pod install`, or ensure that the WebRTC framework is installed via Swift Package Manager.
 3. Open project in Xcode:
